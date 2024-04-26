@@ -1,19 +1,30 @@
-# Reiseplaner 
+# React + TypeScript + Vite
 
-Header mit titel 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Radio Buttons für Geschlecht -> 
+Currently, two official plugins are available:
 
-Kalender für Tage der Reise -> Pro tag x1 Unterwäsche pro 2 tage x1 T-Shirt pro 4 tage 1x wechsel Hose
- 
-Selection für Typisierung des Urlaubs -> Strand/ Städte/ Wandern -> passende kleidung 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Reise ziel zum reinschreiben -> wird ausgegeben bei der Check liste
+## Expanding the ESLint configuration
 
-Transportmittel -> Tickets 
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Hygiene status -> sehr Hygienisch -> Shampoo, Tücher,  Hautpflege, conditiener bei frau, bei mann shampoo oder kein shampoo
+- Configure the top-level `parserOptions` property like this:
 
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Ausgabe in checklist art 
-
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
