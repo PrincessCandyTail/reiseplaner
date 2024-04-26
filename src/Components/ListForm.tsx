@@ -1,12 +1,10 @@
-import React from "react";
-import {Gepaeck} from "./types.d.tsx";
+import { Gepaeck } from "./types.d.tsx";
 
-type props = {
+type Props = {
     data: Gepaeck | undefined;
+};
 
-}
-export default function ListForm({data}: props) {
-
+export default function ListForm({ data }: Props) {
     const SkiItems = (type: string | undefined) => {
         if (type === "Skiing") {
             return (
@@ -19,6 +17,7 @@ export default function ListForm({data}: props) {
             );
         }
     };
+
     return (
         <>
             <div>
@@ -27,13 +26,10 @@ export default function ListForm({data}: props) {
 
                 <input type="checkbox" />
                 <label>{data?.medicine}</label>
-                <label>Unterhosen: {data?.underwear}</label><br/>
-                <label>{SkiItems}</label>
-
-
+                <label>Unterhosen: {data?.underwear}</label><br />
+                {/* Call SkiItems with the appropriate parameter */}
+                {SkiItems(data?.type)}
             </div>
         </>
-
     );
-
 }

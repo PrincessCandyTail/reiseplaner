@@ -9,9 +9,9 @@ export type FormProps = {
 
 export function TravelForm({onSave}: FormProps) {
     const defaultTravelData: TravelData = {
-        gender: " ",
+        gender: "Men", // or any other appropriate default value
         name: "",
-        type:" ",
+        type: "Skiing", // or any other appropriate default value
         date: 0,
         destination: "",
         transport: "Car",
