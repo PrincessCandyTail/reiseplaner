@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import {TravelForm} from "./Components/TravelForm.tsx";
+import {Gepaeck, TravelData} from "./Components/types.d.tsx";
+import ListForm from "./Components/ListForm.tsx";
+import {useState} from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const [gepaeck , setGepaeck]  = useState< Gepaeck | undefined>();
+    const saveHandler = (formData: TravelData) => {
+
+
+        const newGepaeck: Gepaeck = {
+            type: formData.type,
+            name: formData.name,
+            underwear: calculateHygine(formData.hygiene,formData.date),
+            destination: formData.destination,
+            allergie: formData.allergie,
+            medicine: formData.medicine,
+            hosen: "",
+            skiJacken: "",
+            skiHosen: "",
+            skies: "",
+            thermoClothes: ""
+
+        };
+
+        setGepaeck(newGepaeck);
+    };
+    const calculateHygine = (hygiene: number, date: number): number => {
+        if (hygiene === 0) {
+            return 0;
+        } else if (hygiene === 1) {
+            return date;
+        } else if (hygiene === 2) {
+            return (date + 1);
+        } else {
+            return date + 2;
+        }
+    }
+    return (
+        <>
+            <div>
+                <h1>Reisegepäck-Planer</h1>
+            </div>
+            <div>
+                <TravelForm onSave={saveHandler}/>
+            </div>
+            <ListForm data={gepaeck}/>
+        </>
+    )
 }
 
 export default App
